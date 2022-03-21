@@ -28,16 +28,10 @@ public class GameMenuController : MonoBehaviour
       IsGamePaused = true;
       PauseGame();
     }
-
-    if (Input.GetMouseButtonDown(0))
-    {
-      Debug.Log("test");
-    }
   }
 
   public void ResumeGame()
   {
-    Debug.Log("test");
     ResumeTime();
     IsGamePaused = false;
     ActivateOnlySpecificMenu(HUD);
