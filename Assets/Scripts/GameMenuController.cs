@@ -25,7 +25,7 @@ public class GameMenuController : MonoBehaviour
   {
     if (Input.GetKeyDown(KeyCode.Escape) && !IsEndGame)
     {
-      IsGamePaused = true;
+      IsGamePaused = !IsGamePaused;
       PauseGame();
     }
   }
@@ -39,8 +39,14 @@ public class GameMenuController : MonoBehaviour
 
   void PauseGame()
   {
-    StopTime();
-    ActivateOnlySpecificMenu(pauseDisplay);
+    if(IsGamePaused)
+    {
+      StopTime();
+      ActivateOnlySpecificMenu(pauseDisplay);
+    } else{
+      ResumeGame();
+    }
+    
   }
 
   void EndGame()
