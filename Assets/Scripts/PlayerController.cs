@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] 
     public bool playerActive;
 
+    public AudioSource footStep;
+    public AudioSource waterBucket;
 
     private void Awake()
     {
@@ -43,18 +45,22 @@ public class PlayerController : MonoBehaviour
 
         if(fireTilemap.GetTile(positionRight)){
             fireTilemap.SetTile(positionRight, null);
+            waterBucket.Play();
             activeFires -= 1;
         }
         else if(fireTilemap.GetTile(positionLeft)){
             fireTilemap.SetTile(positionLeft, null);
+            waterBucket.Play();
             activeFires -= 1;
         }
         else if(fireTilemap.GetTile(positionDown)){
             fireTilemap.SetTile(positionDown, null);
+            waterBucket.Play();
             activeFires -= 1;
         }
         else if(fireTilemap.GetTile(positionUp)){
             fireTilemap.SetTile(positionUp, null);
+            waterBucket.Play();
             activeFires -= 1;
         }
     }
@@ -79,6 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         if(CanMove(direction)){
             transform.position += (Vector3)direction;
+            footStep.Play();
             playerActive = true;
         }
     }
