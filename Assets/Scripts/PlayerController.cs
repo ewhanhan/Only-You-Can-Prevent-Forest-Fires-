@@ -75,24 +75,28 @@ public class PlayerController : MonoBehaviour
             fireTilemap.SetTile(positionRight, null);
             waterBucket.Play();
             fireManager.fireSpots.Add(positionRight);
+            fireManager.currentFires.Remove(positionRight);
             activeFires -= 1;
         }
         if(fireTilemap.GetTile(positionLeft)){
             fireTilemap.SetTile(positionLeft, null);
             waterBucket.Play();
             fireManager.fireSpots.Add(positionLeft);
+            fireManager.currentFires.Remove(positionLeft);
             activeFires -= 1;
         }
         if(fireTilemap.GetTile(positionDown)){
             fireTilemap.SetTile(positionDown, null);
             waterBucket.Play();
             fireManager.fireSpots.Add(positionDown);
+            fireManager.currentFires.Remove(positionDown);
             activeFires -= 1;
         }
         if(fireTilemap.GetTile(positionUp)){
             fireTilemap.SetTile(positionUp, null);
             waterBucket.Play();
             fireManager.fireSpots.Add(positionUp);
+            fireManager.currentFires.Remove(positionUp);
             activeFires -= 1;
         }
     }
