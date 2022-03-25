@@ -9,13 +9,20 @@ public class FireManager : MonoBehaviour
     private Tilemap objectTilemap;
     [SerializeField]
     private Tilemap fireTilemap;
-    public List<Vector3Int> availablePlaces;
+    private float elapsedTime;
+    private float startTime;
+
+    public List<Vector3Int> fireSpots;
+    public List<Vector3Int> currentFires;
     public TileBase fireTile;
     public TileBase treeBaseTile;
+    public float fireTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        startTime = Time.time;
+
         int x_min = -8;
         int x_max = 8;
         int y_min = -9;
@@ -26,10 +33,26 @@ public class FireManager : MonoBehaviour
                 Vector3Int localPlace = new Vector3Int(x, y, 0);
                 if (objectTilemap.GetTile(localPlace) == treeBaseTile)
                 {
-                    availablePlaces.Add(localPlace);
-                    fireTilemap.SetTile(localPlace, fireTile);
+                    fireSpots.Add(localPlace);
                 }
             }
         }
+    }
+
+    void Update()
+    {
+        elapsedTime = Time.time - startTime;
+        if(elapsedTime > fireTime && fireSpots.Count > 0){
+            startTime = Time.time;
+            int randomSpot = Random.Range(0, fireSpots.Count);
+            StartFire(fireSpots[randomSpot]);
+            currentFires.Add(fireSpots[randomSpot]);
+            fireSpots.RemoveAt(randomSpot);
+        }
+    }
+
+    void StartFire(Vector3Int place)
+    {
+        fireTilemap.SetTile(place, fireTile);
     }
 }
