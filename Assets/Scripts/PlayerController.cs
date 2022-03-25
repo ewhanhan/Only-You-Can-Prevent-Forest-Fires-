@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public Transform movePoint;
     public LayerMask stopMovement;
+    public AudioSource footStep;
+    public AudioSource waterBucket;
 
     private void Awake()
     {
@@ -72,21 +74,25 @@ public class PlayerController : MonoBehaviour
         if(fireTilemap.GetTile(positionRight)){
             fireTilemap.SetTile(positionRight, null);
             fireManager.fireSpots.Add(positionRight);
+            waterBucket.Play();
             activeFires -= 1;
         }
         if(fireTilemap.GetTile(positionLeft)){
             fireTilemap.SetTile(positionLeft, null);
             fireManager.fireSpots.Add(positionLeft);
+            waterBucket.Play();
             activeFires -= 1;
         }
         if(fireTilemap.GetTile(positionDown)){
             fireTilemap.SetTile(positionDown, null);
             fireManager.fireSpots.Add(positionDown);
+            waterBucket.Play();
             activeFires -= 1;
         }
         if(fireTilemap.GetTile(positionUp)){
             fireTilemap.SetTile(positionUp, null);
             fireManager.fireSpots.Add(positionUp);
+            waterBucket.Play();
             activeFires -= 1;
         }
     }
