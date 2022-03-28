@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6459,6 +6459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e83678039b184a38a8c6bcef9d43338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireManager: {fileID: 2138290889}
   groundTilemap: {fileID: 240823390}
   objectTilemap: {fileID: 378566867}
   fireTilemap: {fileID: 2138290894}
@@ -6467,6 +6468,11 @@ MonoBehaviour:
   playerActive: 0
   footStep: {fileID: 628535062}
   waterBucket: {fileID: 864563606}
+  moveSpeed: 5
+  movePoint: {fileID: 2042998875}
+  stopMovement:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!212 &1119274023
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6528,7 +6534,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.55, y: 0.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2042998875}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8082,6 +8089,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855644106}
   m_CullTransparentMesh: 1
+--- !u!1 &2042998874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042998875}
+  m_Layer: 0
+  m_Name: MovePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2042998875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042998874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1119274024}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2109504104
 GameObject:
   m_ObjectHideFlags: 0
@@ -8211,9 +8248,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectTilemap: {fileID: 378566867}
   fireTilemap: {fileID: 2138290894}
-  availablePlaces: []
+  fireSpots: []
+  currentFires: []
   fireTile: {fileID: 11400000, guid: bf1897c3f827f4b19815ec277ce17516, type: 2}
   treeBaseTile: {fileID: 11400000, guid: 092b9fe73067041389d33f31cab1f2c8, type: 2}
+  fireTime: 2
 --- !u!66 &2138290890
 CompositeCollider2D:
   m_ObjectHideFlags: 0

@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
-    private InputAction putOutFire;
+    public FireManager fireManager;
     [SerializeField]
     private Tilemap groundTilemap;
     [SerializeField]
@@ -22,22 +20,52 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource footStep;
     public AudioSource waterBucket;
+    public float moveSpeed = 5f;
+    public Transform movePoint;
+    public LayerMask stopMovement;
 
     private void Awake()
     {
-        playerMovement = new PlayerMovement();
         activeFires = 14;
     }
 
-    private void OnEnable()
+    void Start()
     {
-        playerMovement.Enable();
+        movePoint.parent = null;
+    }
+    
+    void Update() 
+    {
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+
+        if(Vector3.Distance(transform.position, movePoint.position) <= .05f)
+        {
+            if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+            {
+                if(CanMove(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f)))
+                {
+                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                }
+            }
+
+            if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+            {
+                if(CanMove(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f)))
+                {
+                    movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                }
+            }
+        }
+
+        if(Input.GetKeyDown("space"))
+        {
+            DoPutOutFire();
+        }
     }
 
-    private void DoPutOutFire(InputAction.CallbackContext obj)
+    private void DoPutOutFire()
     {
-        // Debug.Log("Jump");
-        Vector3Int gridPosition = fireTilemap.WorldToCell(transform.position);
+        Vector3Int gridPosition = fireTilemap.WorldToCell(movePoint.position);
         Vector3Int positionRight = new Vector3Int(gridPosition[0]+1, gridPosition[1], 0);
         Vector3Int positionLeft = new Vector3Int(gridPosition[0]-1, gridPosition[1], 0);
         Vector3Int positionUp = new Vector3Int(gridPosition[0], gridPosition[1]+1, 0);
@@ -46,62 +74,39 @@ public class PlayerController : MonoBehaviour
         if(fireTilemap.GetTile(positionRight)){
             fireTilemap.SetTile(positionRight, null);
             waterBucket.Play();
+            fireManager.fireSpots.Add(positionRight);
+            fireManager.currentFires.Remove(positionRight);
             activeFires -= 1;
         }
-        else if(fireTilemap.GetTile(positionLeft)){
+        if(fireTilemap.GetTile(positionLeft)){
             fireTilemap.SetTile(positionLeft, null);
             waterBucket.Play();
+            fireManager.fireSpots.Add(positionLeft);
+            fireManager.currentFires.Remove(positionLeft);
             activeFires -= 1;
         }
-        else if(fireTilemap.GetTile(positionDown)){
+        if(fireTilemap.GetTile(positionDown)){
             fireTilemap.SetTile(positionDown, null);
             waterBucket.Play();
+            fireManager.fireSpots.Add(positionDown);
+            fireManager.currentFires.Remove(positionDown);
             activeFires -= 1;
         }
-        else if(fireTilemap.GetTile(positionUp)){
+        if(fireTilemap.GetTile(positionUp)){
             fireTilemap.SetTile(positionUp, null);
             waterBucket.Play();
+            fireManager.fireSpots.Add(positionUp);
+            fireManager.currentFires.Remove(positionUp);
             activeFires -= 1;
         }
     }
 
-    private bool FireNearby()
+    private bool CanMove(Vector3 direction)
     {
-        return false;
-    }
-
-    private void OnDisable()
-    {
-        playerMovement.Disable();
-    }
-
-    void Start()
-    {
-        playerMovement.Main.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>());
-        playerMovement.Main.PutOutFire.performed += DoPutOutFire;
-    }
-
-    private void Move(Vector2 direction)
-    {
-        if(CanMove(direction)){
-            transform.position += (Vector3)direction;
-            footStep.Play();
-            playerActive = true;
-        }
-    }
-
-    private bool CanMove(Vector2 direction)
-    {
-        Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
+        Vector3Int gridPosition = objectTilemap.WorldToCell(direction);
         if(!groundTilemap.HasTile(gridPosition) || objectTilemap.HasTile(gridPosition)){
             return false;
         }
         return true;
-    }
-
-
-    private bool NearFire()
-    {
-        return false;
     }
 }
