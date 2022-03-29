@@ -36,7 +36,8 @@ The game ends when \_\_\_
 ## Objectives
 
 - Stop the fires that go through the campground by pouring water on any that popup.
-- Keep campers quiet and safe by hushing them up.
+- Settle loud and rowdy campers to keep the camp grounds quiet.
+- Keep the forest alive and the campground quiet for as long as possible!
 
 # Controls
 
@@ -49,6 +50,8 @@ The game ends when \_\_\_
 **D** - Move right
 
 **Spacebar** - Pour water on a fire / hush camper(s)
+
+**Escape** - Pause the game and bring up the pause menu while playing
 
 # Features
 
