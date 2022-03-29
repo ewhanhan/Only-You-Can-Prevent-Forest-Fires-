@@ -55,13 +55,13 @@ The game ends when \_\_\_
 ## Actions
 
 <p align="center">
-<img src="README/Assets/action_extinguishfire.png" alt="startmenu" width="200" />
+<img src="README/Assets/action_extinguishfire.png" alt="action_extinguishfire" width="200" />
 </p>
 
 **Pour water on fire** - Press spacebar when next to an ongoing fire to extinguish it
 
 <p align="center">
-<img src="README/Assets/action_hushcamper.png" alt="startmenu" width="200" />
+<img src="README/Assets/action_hushcamper.png" alt="action_hushcamper" width="200" />
 </p>
 
 **Hush loud camper** - Press spacebar when next to a loud camper to silence them.
