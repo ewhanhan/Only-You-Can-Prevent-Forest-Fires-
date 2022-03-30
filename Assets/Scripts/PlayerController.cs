@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public TileBase fireTile;
     [HideInInspector] 
     public bool playerActive;
+    [HideInInspector] 
+    public int bucketWaterQuantity;
     public TileBase camperTile;
     public TileBase wellTile;
 
@@ -24,7 +27,9 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public Transform movePoint;
     public LayerMask stopMovement;
-    public int bucketWaterQuantity;
+    public Text bucketText;
+    public Text currentFiresText;
+    public Text loudCampers;
 
 
     private void Awake()
@@ -68,6 +73,7 @@ public class PlayerController : MonoBehaviour
             DoQuietCamper();
             RefillBucket();
         }
+
     }
 
     private void RefillBucket()
@@ -83,6 +89,7 @@ public class PlayerController : MonoBehaviour
         {
             waterBucket.Play();
             bucketWaterQuantity = 10;
+            bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
         }
     }
 
@@ -97,18 +104,26 @@ public class PlayerController : MonoBehaviour
         if(objectTilemap.GetTile(positionRight) == camperTile){
             objectTilemap.SetTile(positionRight, null);
             camperManager.camperSpots.Add(positionRight);
+            camperManager.currentCampers.Remove(positionRight);
+            loudCampers.text = "Loud Campers - " + camperManager.currentCampers.Count.ToString();
         }
         if(objectTilemap.GetTile(positionLeft) == camperTile){
             objectTilemap.SetTile(positionLeft, null);
             camperManager.camperSpots.Add(positionLeft);
+            camperManager.currentCampers.Remove(positionLeft);
+            loudCampers.text = "Loud Campers - " + camperManager.currentCampers.Count.ToString();
         }
         if(objectTilemap.GetTile(positionDown) == camperTile){
             objectTilemap.SetTile(positionDown, null);
             camperManager.camperSpots.Add(positionDown);
+            camperManager.currentCampers.Remove(positionDown);
+            loudCampers.text = "Loud Campers - " + camperManager.currentCampers.Count.ToString();
         }
         if(objectTilemap.GetTile(positionUp) == camperTile){
             objectTilemap.SetTile(positionUp, null);
             camperManager.camperSpots.Add(positionUp);
+            camperManager.currentCampers.Remove(positionUp);
+            loudCampers.text = "Loud Campers - " + camperManager.currentCampers.Count.ToString();
         }
     }
 
@@ -128,6 +143,8 @@ public class PlayerController : MonoBehaviour
                 bucketWaterQuantity -= 1;
                 fireManager.fireSpots.Add(positionRight);
                 fireManager.currentFires.Remove(positionRight);
+                bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
+                currentFiresText.text = "Fires - " + fireManager.currentFires.Count.ToString();
             }
             if(fireTilemap.GetTile(positionLeft)){
                 fireTilemap.SetTile(positionLeft, null);
@@ -135,6 +152,8 @@ public class PlayerController : MonoBehaviour
                 bucketWaterQuantity -= 1;
                 fireManager.fireSpots.Add(positionLeft);
                 fireManager.currentFires.Remove(positionLeft);
+                bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
+                currentFiresText.text = "Fires - " + fireManager.currentFires.Count.ToString();
             }
             if(fireTilemap.GetTile(positionDown)){
                 fireTilemap.SetTile(positionDown, null);
@@ -142,6 +161,8 @@ public class PlayerController : MonoBehaviour
                 bucketWaterQuantity -= 1;
                 fireManager.fireSpots.Add(positionDown);
                 fireManager.currentFires.Remove(positionDown);
+                bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
+                currentFiresText.text = "Fires - " + fireManager.currentFires.Count.ToString();
             }
             if(fireTilemap.GetTile(positionUp)){
                 fireTilemap.SetTile(positionUp, null);
@@ -149,6 +170,8 @@ public class PlayerController : MonoBehaviour
                 bucketWaterQuantity -= 1;
                 fireManager.fireSpots.Add(positionUp);
                 fireManager.currentFires.Remove(positionUp);
+                bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
+                currentFiresText.text = "Fires - " + fireManager.currentFires.Count.ToString();
             }
         }
     }

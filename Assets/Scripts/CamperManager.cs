@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class CamperManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CamperManager : MonoBehaviour
     private float elapsedTime;
     private float startTime;
     public float camperTime;
+    public Text loudCampers;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,7 @@ public class CamperManager : MonoBehaviour
             AddCamper(camperSpots[randomSpot]);
             currentCampers.Add(camperSpots[randomSpot]);
             camperSpots.RemoveAt(randomSpot);
+            loudCampers.text = "Loud Campers - " + currentCampers.Count.ToString();
         }
     }
 
