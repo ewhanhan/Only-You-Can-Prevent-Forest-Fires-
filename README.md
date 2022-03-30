@@ -98,12 +98,12 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 
 # System Requirements
 
-| Specifics  | Recommended |
-| ---------- | ---------- |
+| Specifics  | Recommended                                            |
+| ---------- | ------------------------------------------------------ |
 | OS         | Windows 10                                             |
 | Processor} | Intel Pentium 4 processor or later that's SSE2 capable |
 | Memory     | 1 GB RAM                                               |
-| Graphics   | Nvidia GeForce GTX 460  or  AMD Radeon HD 6870 |
+| Graphics   | Nvidia GeForce GTX 460 or AMD Radeon HD 6870           |
 | Storage    | 250 MB available space                                 |
 | Additional | No internet connection, No in-game purchases           |
 
@@ -111,19 +111,17 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 
 ## Music
 
-
-
-| Sound  | Source |
-| ---------- | ---------- |
-| Water         | <https://opengameart.org/content/water-waves>                                             |
-| Walking | <https://opengameart.org/content/grass-foot-step-sounds-yo-frankie> |
-| Shh  |  <https://www.zapsplat.com/music/female-adult-says-shh-as-if-asking-to-be-quiet-1/> |
-| Start Menu | <https://opengameart.org/content/forest>  |
-| Background |  <https://opengameart.org/content/in-the-forest>  |
-| Fire |  <https://opengameart.org/content/spell-4-fire>  |
-| Game Over |  <https://www.zapsplat.com/music/8-bit-game-over-80s-arcade-simple-alert-notification-for-game-1/>  |
-  
-
+| Sound            | Source                                                                                            |
+| ---------------- | ------------------------------------------------------------------------------------------------- |
+| Water            | <https://opengameart.org/content/water-waves>                                                     |
+| Walking          | <https://opengameart.org/content/grass-foot-step-sounds-yo-frankie>                               |
+| Shh              | <https://www.zapsplat.com/music/female-adult-says-shh-as-if-asking-to-be-quiet-1/>                |
+| Start Menu       | <https://opengameart.org/content/forest>                                                          |
+| Background       | <https://opengameart.org/content/in-the-forest>                                                   |
+| Fire             | <https://opengameart.org/content/spell-4-fire>                                                    |
+| Game Over        | <https://www.zapsplat.com/music/8-bit-game-over-80s-arcade-simple-alert-notification-for-game-1/> |
+| Background Image | <https://wallpaper-mania.com/background/other-wallpapers/8-bit/>                                  |
+| Font             | <https://fonts.google.com/specimen/VT323/>                                                        |
 
 Sprites -
 
