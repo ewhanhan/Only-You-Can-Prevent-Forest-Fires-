@@ -31,7 +31,7 @@ When you start <em>Only You can Prevent Forest Fires!</em>, you can select the f
 
 ## End of Game Conditions
 
-The game ends when \_\_\_
+The game ends when the player fails to extinguish/ hush an event in the delegated time. The time is indicated by a decreasing coloured bar underneath the tree/ camp.
 
 ## Objectives
 
@@ -71,8 +71,25 @@ The game ends when \_\_\_
 
 ## HUD Display
 
-- image of each HUD component followed by,
-- description of each HUD item
+### Map
+
+<p align="center">
+<img src="README/Assets/minimap.png" alt="minimap" width="200" />
+</p>
+
+Displays a broader view of the game and helps gather information of other sections of the campsite.
+
+### Timer
+
+<p align="center">
+<img src="README/Assets/timer.png" alt="timer" width="200" />
+</p>
+
+Displays the total elapsed time since start.
+
+### Time Bar
+
+Represents the remaining time to extinguish/ hush the object before you lose.
 
 ## Menus
 
@@ -80,6 +97,15 @@ The game ends when \_\_\_
 - description of each button available
 
 # System Requirements
+
+| Specifics  | Recommended                                            |
+| ---------- | ------------------------------------------------------ | ------------------ |
+| OS         | Windows 10                                             |
+| Processor} | Intel Pentium 4 processor or later that's SSE2 capable |
+| Memory     | 1 GB RAM                                               |
+| Graphics   | Nvidia GeForce GTX 460                                 | AMD Radeon HD 6870 |
+| Storage    | 250 MB available space                                 |
+| Additional | No internet connection, No in-game purchases           |
 
 # Imports / Credits
 
