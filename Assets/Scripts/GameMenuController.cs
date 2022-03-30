@@ -9,6 +9,7 @@ public class GameMenuController : MonoBehaviour
   public GameObject pauseDisplay;
   public GameObject endGameDisplay;
   public GameObject controlsDisplay;
+  public GameObject objectivesDisplay;
   public GameObject HUD;
   public GameObject[] _UIArr;
 
@@ -80,6 +81,11 @@ public class GameMenuController : MonoBehaviour
         UI.SetActive(false);
       }
     }
+  }
+
+  public void ObjectivesMenu()
+  {
+    ActivateOnlySpecificMenu(objectivesDisplay);
   }
 
   public void ControlsMenu()
