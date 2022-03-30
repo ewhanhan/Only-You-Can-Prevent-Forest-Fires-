@@ -73,12 +73,15 @@ public class PlayerController : MonoBehaviour
         Vector3Int positionLeft = new Vector3Int(gridPosition[0]-1, gridPosition[1], 0);
         Vector3Int positionUp = new Vector3Int(gridPosition[0], gridPosition[1]+1, 0);
         Vector3Int positionDown = new Vector3Int(gridPosition[0], gridPosition[1]-2, 0);
+        GameMenuController instanceOfGameMenuController = GameObject.Find("Canvas_UI").GetComponent<GameMenuController>();
+                    
 
         if(fireTilemap.GetTile(positionRight)){
             fireTilemap.SetTile(positionRight, null);
             waterBucket.Play();
             fireManager.fireSpots.Add(positionRight);
             fireManager.currentFires.Remove(positionRight);
+            instanceOfGameMenuController.DeleteFireSlider(positionRight);
             activeFires -= 1;
         }
         if(fireTilemap.GetTile(positionLeft)){
@@ -86,6 +89,7 @@ public class PlayerController : MonoBehaviour
             waterBucket.Play();
             fireManager.fireSpots.Add(positionLeft);
             fireManager.currentFires.Remove(positionLeft);
+            instanceOfGameMenuController.DeleteFireSlider(positionLeft);
             activeFires -= 1;
         }
         if(fireTilemap.GetTile(positionDown)){
@@ -93,6 +97,7 @@ public class PlayerController : MonoBehaviour
             waterBucket.Play();
             fireManager.fireSpots.Add(positionDown);
             fireManager.currentFires.Remove(positionDown);
+            instanceOfGameMenuController.DeleteFireSlider(positionDown);
             activeFires -= 1;
         }
         if(fireTilemap.GetTile(positionUp)){
@@ -100,6 +105,7 @@ public class PlayerController : MonoBehaviour
             waterBucket.Play();
             fireManager.fireSpots.Add(positionUp);
             fireManager.currentFires.Remove(positionUp);
+            instanceOfGameMenuController.DeleteFireSlider(positionUp);
             activeFires -= 1;
         }
     }

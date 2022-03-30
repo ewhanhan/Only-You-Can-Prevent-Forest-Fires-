@@ -17,12 +17,14 @@ public class FireManager : MonoBehaviour
     public TileBase fireTile;
     public TileBase treeBaseTile;
     public float fireTime;
+    private GameMenuController instanceOfGameMenuController;
 
     public AudioSource fireSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        instanceOfGameMenuController = GameObject.Find("Canvas_UI").GetComponent<GameMenuController>();
         startTime = Time.time;
 
         int x_min = -8;
@@ -30,8 +32,10 @@ public class FireManager : MonoBehaviour
         int y_min = -9;
         int y_max = 8;
 
-        for(int x=x_min; x<=x_max; x++){
-            for(int y=y_min; y<=y_max; y++){
+        for (int x = x_min; x <= x_max; x++)
+        {
+            for (int y = y_min; y <= y_max; y++)
+            {
                 Vector3Int localPlace = new Vector3Int(x, y, 0);
                 if (objectTilemap.GetTile(localPlace) == treeBaseTile)
                 {
@@ -44,7 +48,8 @@ public class FireManager : MonoBehaviour
     void Update()
     {
         elapsedTime = Time.time - startTime;
-        if(elapsedTime > fireTime && fireSpots.Count > 0){
+        if (elapsedTime > fireTime && fireSpots.Count > 0)
+        {
             startTime = Time.time;
             int randomSpot = Random.Range(0, fireSpots.Count);
             StartFire(fireSpots[randomSpot]);
@@ -54,7 +59,12 @@ public class FireManager : MonoBehaviour
     }
 
     void StartFire(Vector3Int place)
-    {   fireSound.Play();
+    {   
+        fireSound.Play();
         fireTilemap.SetTile(place, fireTile);
+        // Vector3Int gridPosition = fireTilemap.WorldToCell(new Vector3Int(localPlace.x, localPlace.y + 1, 0));
+        // GridLayout gridLayout = transform.parent.GetComponentInParent<GridLayout>();
+        Vector3 fireSliderPosition = transform.TransformPoint(place);
+        instanceOfGameMenuController.InstantiateFireHealth(fireSliderPosition);
     }
 }

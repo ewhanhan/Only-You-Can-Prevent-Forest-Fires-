@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameMenuController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameMenuController : MonoBehaviour
   public GameObject objectivesDisplay;
   public GameObject HUD;
   public GameObject[] _UIArr;
+  public Slider fireBaseSlider;
+  public List<Slider> fireBaseSlidersList;
 
   public static bool IsEndGame = false;
   public static bool IsGamePaused = false;
@@ -32,11 +35,42 @@ public class GameMenuController : MonoBehaviour
     }
   }
 
+  public void InstantiateFireHealth(Vector3 localPlace){
+    Slider instantiatedSlider = Instantiate(fireBaseSlider, localPlace, Quaternion.identity);
+    instantiatedSlider.transform.SetParent(HUD.transform, false);
+    fireBaseSlidersList.Add(instantiatedSlider);
+    StartSingleFireTimer(instantiatedSlider);
+  }
+
+  public void DeleteFireSlider(Vector3Int localPlace){
+    foreach(Slider fireSlider in fireBaseSlidersList){
+      if(fireSlider.transform.position == localPlace){
+        // Stop the Couroutine
+        
+        // Destroy object.
+        Destroy(fireSlider.gameObject);
+        // Remove from list.
+        fireBaseSlidersList.Remove(fireSlider);
+      }
+    }
+  }
+
+  void StartSingleFireTimer(Slider fireSlider){
+    StartCoroutine(DecreseFireBaseSlider(fireSlider));
+  }
+
+  void StartAllFireTimers(){
+    foreach(Slider fireSlider in fireBaseSlidersList){
+      StartCoroutine(DecreseFireBaseSlider(fireSlider));
+    }
+  }
+
   public void ResumeGame()
   {
     ResumeTime();
     IsGamePaused = false;
     ActivateOnlySpecificMenu(HUD);
+    StartAllFireTimers();
   }
 
   void PauseGame()
@@ -44,6 +78,7 @@ public class GameMenuController : MonoBehaviour
     if (IsGamePaused)
     {
       StopTime();
+      StopAllCoroutines();
       ActivateOnlySpecificMenu(pauseDisplay);
     }
     else
@@ -52,7 +87,7 @@ public class GameMenuController : MonoBehaviour
     }
   }
 
-  void EndGame()
+  public void EndGame()
   {
     StopTime();
     ActivateOnlySpecificMenu(endGameDisplay);
@@ -63,12 +98,12 @@ public class GameMenuController : MonoBehaviour
     Time.timeScale = 1;
   }
 
-  private void StopTime()
+  public void StopTime()
   {
     Time.timeScale = 0;
   }
 
-  private void ActivateOnlySpecificMenu(GameObject specificUI)
+  public void ActivateOnlySpecificMenu(GameObject specificUI)
   {
     foreach (var UI in _UIArr)
     {
@@ -115,5 +150,17 @@ public class GameMenuController : MonoBehaviour
   public void Restart()
   {
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+  }
+
+  public IEnumerator DecreseFireBaseSlider(Slider slider){
+    float timeSlice = (slider.value / 30);
+    while (slider.value >= 0){
+        slider.value -= timeSlice;
+        yield return new WaitForSeconds(1);
+        if (slider.value <= 0){
+            EndGame();
+            break;
+        }
+    }
   }
 }
