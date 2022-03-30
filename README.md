@@ -160,3 +160,8 @@ Pressing the ESC button while playing will display the Pause Menu.
 | Font  | Source                                     |
 | ----- | ------------------------------------------ |
 | VT323 | <https://fonts.google.com/specimen/VT323/> |
+
+| Asset               | Source                                                |
+| ------------------- | ----------------------------------------------------- |
+| kenny_rpgurbanpack  | <https://kenney.nl/assets/rpg-urban-pack>             |
+| rouguelike-pack     | <https://kenney.nl/assets/roguelike-rpg-pack>         |
