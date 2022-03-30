@@ -1,8 +1,16 @@
 # ONLY YOU CAN PREVENT FOREST FIRES!
 
-For CS4483, developed by: Mathieu Girard, Jason Koo, Nicholas Battel, Junseo Hwang, and Ewhan Han
-<br/>
-<br/>
+CS4483/CS9541 Group Game Demo
+
+Winter Session 2021 Group:
+
+| Team          | UWO Email      |
+| ------------- | -------------- |
+| Mathieu Giard | mgirar3@uwo.ca |
+| Junseo Hwang  | jhwan7@uwo.ca  |
+| Ewhan Han     | ehan9@uwo.ca   |
+| Jason Koo     | jkoo26@uwo.ca  |
+| Nick Battel   | nbattel@uwo.ca |
 
 ## Story
 
@@ -96,8 +104,8 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 At the start of the game the player will be greeted by the Start Menu.
 Pressing the ESC button while playing will display the Pause Menu.
 
+### Start Menu Options
 
-### Start Menu options
 **START** - Will start the game.
 
 **INSTRUCTIONS** - You can find instructions on how to play the game here.
@@ -106,8 +114,8 @@ Pressing the ESC button while playing will display the Pause Menu.
 
 **QUIT** - Exit the game.
 
-
 ### Pause Menu Options
+
 **RESUME** - Resume the game.
 
 **OBJECTIVES** - You will find a description about the goals of the game.
@@ -119,7 +127,6 @@ Pressing the ESC button while playing will display the Pause Menu.
 <p align="center">
 <img src="README/Assets/pause-menu.png" alt="pause-menu" width="900" />
 </p>
-
 
 # System Requirements
 
@@ -153,5 +160,3 @@ Pressing the ESC button while playing will display the Pause Menu.
 | Font  | Source                                     |
 | ----- | ------------------------------------------ |
 | VT323 | <https://fonts.google.com/specimen/VT323/> |
-
-Sprites -
