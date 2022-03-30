@@ -98,12 +98,12 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 
 # System Requirements
 
-| Specifics  | Recommended                                            |
-| ---------- | ------------------------------------------------------ | ------------------ |
+| Specifics  | Recommended |
+| ---------- | ---------- |
 | OS         | Windows 10                                             |
 | Processor} | Intel Pentium 4 processor or later that's SSE2 capable |
 | Memory     | 1 GB RAM                                               |
-| Graphics   | Nvidia GeForce GTX 460                                 | AMD Radeon HD 6870 |
+| Graphics   | Nvidia GeForce GTX 460  or  AMD Radeon HD 6870 |
 | Storage    | 250 MB available space                                 |
 | Additional | No internet connection, No in-game purchases           |
 
