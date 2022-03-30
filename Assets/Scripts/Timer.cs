@@ -6,22 +6,17 @@ using UnityEngine.Tilemaps;
 
 public class Timer : MonoBehaviour
 {
-    float currentTime;
-    public Text currentTimeText;
-    public PlayerController playerController;
-    public Button exitButton;
+  float currentTime;
+  public Text currentTimeText;
+  public PlayerController playerController;
 
-    // Update is called once per frame
-    void Update()
-    {   
-        if(playerController.activeFires > 0){
-            if(playerController.playerActive){
-                currentTime += Time.deltaTime;
-                currentTimeText.text = currentTime.ToString();
-            }
-        }
-        else {
-            Application.Quit();
-        }
+  // Update is called once per frame
+  void Update()
+  {
+    if (playerController.playerActive)
+    {
+      currentTime += Time.deltaTime;
+      currentTimeText.text = currentTime.ToString().Substring(0,4);
     }
+  }
 }

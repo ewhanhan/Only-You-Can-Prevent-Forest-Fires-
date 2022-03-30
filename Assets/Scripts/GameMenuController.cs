@@ -8,6 +8,8 @@ public class GameMenuController : MonoBehaviour
 {
   public GameObject pauseDisplay;
   public GameObject endGameDisplay;
+  public GameObject controlsDisplay;
+  public GameObject objectivesDisplay;
   public GameObject HUD;
   public GameObject[] _UIArr;
 
@@ -39,14 +41,15 @@ public class GameMenuController : MonoBehaviour
 
   void PauseGame()
   {
-    if(IsGamePaused)
+    if (IsGamePaused)
     {
       StopTime();
       ActivateOnlySpecificMenu(pauseDisplay);
-    } else{
+    }
+    else
+    {
       ResumeGame();
     }
-    
   }
 
   void EndGame()
@@ -78,6 +81,21 @@ public class GameMenuController : MonoBehaviour
         UI.SetActive(false);
       }
     }
+  }
+
+  public void ObjectivesMenu()
+  {
+    ActivateOnlySpecificMenu(objectivesDisplay);
+  }
+
+  public void ControlsMenu()
+  {
+    ActivateOnlySpecificMenu(controlsDisplay);
+  }
+
+  public void ReturnPauseMenu()
+  {
+    ActivateOnlySpecificMenu(pauseDisplay);
   }
 
   public void ReturnStartMenu()
