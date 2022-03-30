@@ -110,7 +110,7 @@ Pressing the ESC button while playing will display the Pause Menu.
 ### Pause Menu Options
 **RESUME** - Resume the game.
 
-**OBJECTIVES** - You will find a description about the goals in the game.
+**OBJECTIVES** - You will find a description about the goals of the game.
 
 **CONTROLS** - You will find all the buttons and their functions within the game.
 
