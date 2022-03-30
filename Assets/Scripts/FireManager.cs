@@ -13,6 +13,7 @@ public class FireManager : MonoBehaviour
     private float startTime;
 
     public List<Vector3Int> fireSpots;
+    public List<Vector3> fireSliderSpots;
     public List<Vector3Int> currentFires;
     public TileBase fireTile;
     public TileBase treeBaseTile;
@@ -40,6 +41,7 @@ public class FireManager : MonoBehaviour
                 if (objectTilemap.GetTile(localPlace) == treeBaseTile)
                 {
                     fireSpots.Add(localPlace);
+                    fireSliderSpots.Add(transform.TransformPoint(localPlace));
                 }
             }
         }
@@ -52,19 +54,19 @@ public class FireManager : MonoBehaviour
         {
             startTime = Time.time;
             int randomSpot = Random.Range(0, fireSpots.Count);
-            StartFire(fireSpots[randomSpot]);
+            StartFire(fireSpots[randomSpot], fireSliderSpots[randomSpot]);
             currentFires.Add(fireSpots[randomSpot]);
             fireSpots.RemoveAt(randomSpot);
         }
     }
 
-    void StartFire(Vector3Int place)
+    void StartFire(Vector3Int place, Vector3 fireSliderPlace)
     {   
         fireSound.Play();
         fireTilemap.SetTile(place, fireTile);
         // Vector3Int gridPosition = fireTilemap.WorldToCell(new Vector3Int(localPlace.x, localPlace.y + 1, 0));
         // GridLayout gridLayout = transform.parent.GetComponentInParent<GridLayout>();
-        Vector3 fireSliderPosition = transform.TransformPoint(place);
+        Vector3 fireSliderPosition = transform.TransformPoint(fireSliderPlace);
         instanceOfGameMenuController.InstantiateFireHealth(fireSliderPosition);
     }
 }
