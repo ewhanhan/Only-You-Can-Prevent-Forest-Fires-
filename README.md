@@ -93,8 +93,34 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 
 ## Menus
 
-- image pause menu and endgame
-- description of each button available
+At the start of the game the player will be greeted by the Start Menu.
+### Start Menu options
+*Start* Will start the game.
+
+*Instructions* You can find instructions on how to play the game here.
+
+*Credits* View the developers of the game
+
+*Quit* Exit the game.
+
+<p align="center">
+<img src="README/Assets/startmenu.png" alt="start-menu" width="200" />
+</p>
+
+Pressing the ESC button while playing will display the Pause Menu.
+### Pause Menu Options
+*Resume* - Resume the game.
+
+*Objectives* - You will find a description about the goals in the game.
+
+*Controls* - You will find all the buttons and their functions within the game.
+
+*Exit* - Exit the game.
+
+<p align="center">
+<img src="README/Assets/pause-menu.png" alt="pause-menu" width="200" />
+</p>
+
 
 # System Requirements
 
