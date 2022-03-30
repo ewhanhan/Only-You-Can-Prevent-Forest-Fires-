@@ -15,20 +15,20 @@ public class PlayerController : MonoBehaviour
     private Tilemap fireTilemap;
     public TileBase fireTile;
     [HideInInspector] 
-    public int activeFires;
-    [HideInInspector] 
     public bool playerActive;
     public TileBase camperTile;
+    public TileBase wellTile;
 
     public AudioSource footStep;
     public AudioSource waterBucket;
     public float moveSpeed = 5f;
     public Transform movePoint;
     public LayerMask stopMovement;
+    public int bucketWaterQuantity;
+
 
     private void Awake()
     {
-        activeFires = 14;
         playerActive = true;
     }
 
@@ -66,6 +66,23 @@ public class PlayerController : MonoBehaviour
         {
             DoPutOutFire();
             DoQuietCamper();
+            RefillBucket();
+        }
+    }
+
+    private void RefillBucket()
+    {
+        Vector3Int gridPosition = objectTilemap.WorldToCell(movePoint.position);
+        Vector3Int positionRight = new Vector3Int(gridPosition[0]+1, gridPosition[1], 0);
+        Vector3Int positionLeft = new Vector3Int(gridPosition[0]-1, gridPosition[1], 0);
+        Vector3Int positionUp = new Vector3Int(gridPosition[0], gridPosition[1]+1, 0);
+        Vector3Int positionDown = new Vector3Int(gridPosition[0], gridPosition[1]-1, 0);
+
+        if(objectTilemap.GetTile(positionRight) == wellTile || objectTilemap.GetTile(positionLeft) == wellTile || 
+            objectTilemap.GetTile(positionUp) == wellTile || objectTilemap.GetTile(positionDown) == wellTile)
+        {
+            waterBucket.Play();
+            bucketWaterQuantity = 10;
         }
     }
 
@@ -97,39 +114,42 @@ public class PlayerController : MonoBehaviour
 
     private void DoPutOutFire()
     {
-        Vector3Int gridPosition = fireTilemap.WorldToCell(movePoint.position);
-        Vector3Int positionRight = new Vector3Int(gridPosition[0]+1, gridPosition[1], 0);
-        Vector3Int positionLeft = new Vector3Int(gridPosition[0]-1, gridPosition[1], 0);
-        Vector3Int positionUp = new Vector3Int(gridPosition[0], gridPosition[1]+1, 0);
-        Vector3Int positionDown = new Vector3Int(gridPosition[0], gridPosition[1]-2, 0);
+        if(bucketWaterQuantity > 0)
+        {
+            Vector3Int gridPosition = fireTilemap.WorldToCell(movePoint.position);
+            Vector3Int positionRight = new Vector3Int(gridPosition[0]+1, gridPosition[1], 0);
+            Vector3Int positionLeft = new Vector3Int(gridPosition[0]-1, gridPosition[1], 0);
+            Vector3Int positionUp = new Vector3Int(gridPosition[0], gridPosition[1]+1, 0);
+            Vector3Int positionDown = new Vector3Int(gridPosition[0], gridPosition[1]-2, 0);
 
-        if(fireTilemap.GetTile(positionRight)){
-            fireTilemap.SetTile(positionRight, null);
-            waterBucket.Play();
-            fireManager.fireSpots.Add(positionRight);
-            fireManager.currentFires.Remove(positionRight);
-            activeFires -= 1;
-        }
-        if(fireTilemap.GetTile(positionLeft)){
-            fireTilemap.SetTile(positionLeft, null);
-            waterBucket.Play();
-            fireManager.fireSpots.Add(positionLeft);
-            fireManager.currentFires.Remove(positionLeft);
-            activeFires -= 1;
-        }
-        if(fireTilemap.GetTile(positionDown)){
-            fireTilemap.SetTile(positionDown, null);
-            waterBucket.Play();
-            fireManager.fireSpots.Add(positionDown);
-            fireManager.currentFires.Remove(positionDown);
-            activeFires -= 1;
-        }
-        if(fireTilemap.GetTile(positionUp)){
-            fireTilemap.SetTile(positionUp, null);
-            waterBucket.Play();
-            fireManager.fireSpots.Add(positionUp);
-            fireManager.currentFires.Remove(positionUp);
-            activeFires -= 1;
+            if(fireTilemap.GetTile(positionRight)){
+                fireTilemap.SetTile(positionRight, null);
+                waterBucket.Play();
+                bucketWaterQuantity -= 1;
+                fireManager.fireSpots.Add(positionRight);
+                fireManager.currentFires.Remove(positionRight);
+            }
+            if(fireTilemap.GetTile(positionLeft)){
+                fireTilemap.SetTile(positionLeft, null);
+                waterBucket.Play();
+                bucketWaterQuantity -= 1;
+                fireManager.fireSpots.Add(positionLeft);
+                fireManager.currentFires.Remove(positionLeft);
+            }
+            if(fireTilemap.GetTile(positionDown)){
+                fireTilemap.SetTile(positionDown, null);
+                waterBucket.Play();
+                bucketWaterQuantity -= 1;
+                fireManager.fireSpots.Add(positionDown);
+                fireManager.currentFires.Remove(positionDown);
+            }
+            if(fireTilemap.GetTile(positionUp)){
+                fireTilemap.SetTile(positionUp, null);
+                waterBucket.Play();
+                bucketWaterQuantity -= 1;
+                fireManager.fireSpots.Add(positionUp);
+                fireManager.currentFires.Remove(positionUp);
+            }
         }
     }
 

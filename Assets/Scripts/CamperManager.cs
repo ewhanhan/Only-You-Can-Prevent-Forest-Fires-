@@ -14,9 +14,6 @@ public class CamperManager : MonoBehaviour
     private float startTime;
     public float camperTime;
 
-    public int x;
-    public int y;
-
     // Start is called before the first frame update
     void Start()
     {
