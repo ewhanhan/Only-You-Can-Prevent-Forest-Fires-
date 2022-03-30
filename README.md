@@ -98,23 +98,23 @@ Pressing the ESC button while playing will display the Pause Menu.
 
 
 ### Start Menu options
-**Start** - Will start the game.
+**START** - Will start the game.
 
-**Instructions** - You can find instructions on how to play the game here.
+**INSTRUCTIONS** - You can find instructions on how to play the game here.
 
-**Credits** - View the developers of the game
+**CREDITS** - View the developers of the game
 
-**Quit** - Exit the game.
+**QUIT** - Exit the game.
 
 
 ### Pause Menu Options
-**Resume** - Resume the game.
+**RESUME** - Resume the game.
 
-**Objectives** - You will find a description about the goals in the game.
+**OBJECTIVES** - You will find a description about the goals in the game.
 
-**Controls** - You will find all the buttons and their functions within the game.
+**CONTROLS** - You will find all the buttons and their functions within the game.
 
-**Exit** - Exit the game.
+**EXIT** - Exit the game.
 
 <p align="center">
 <img src="README/Assets/pause-menu.png" alt="pause-menu" width="900" />
