@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
     public FireManager fireManager;
+    public CamperManager camperManager;
     [SerializeField]
     private Tilemap groundTilemap;
     [SerializeField]
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public int activeFires;
     [HideInInspector] 
     public bool playerActive;
+    public TileBase camperTile;
 
     public AudioSource footStep;
     public AudioSource waterBucket;
@@ -63,6 +65,33 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown("space"))
         {
             DoPutOutFire();
+            DoQuietCamper();
+        }
+    }
+
+    private void DoQuietCamper()
+    {
+        Vector3Int gridPosition = objectTilemap.WorldToCell(movePoint.position);
+        Vector3Int positionRight = new Vector3Int(gridPosition[0]+1, gridPosition[1], 0);
+        Vector3Int positionLeft = new Vector3Int(gridPosition[0]-1, gridPosition[1], 0);
+        Vector3Int positionUp = new Vector3Int(gridPosition[0], gridPosition[1]+1, 0);
+        Vector3Int positionDown = new Vector3Int(gridPosition[0], gridPosition[1]-1, 0);
+
+        if(objectTilemap.GetTile(positionRight) == camperTile){
+            objectTilemap.SetTile(positionRight, null);
+            camperManager.camperSpots.Add(positionRight);
+        }
+        if(objectTilemap.GetTile(positionLeft) == camperTile){
+            objectTilemap.SetTile(positionLeft, null);
+            camperManager.camperSpots.Add(positionLeft);
+        }
+        if(objectTilemap.GetTile(positionDown) == camperTile){
+            objectTilemap.SetTile(positionDown, null);
+            camperManager.camperSpots.Add(positionDown);
+        }
+        if(objectTilemap.GetTile(positionUp) == camperTile){
+            objectTilemap.SetTile(positionUp, null);
+            camperManager.camperSpots.Add(positionUp);
         }
     }
 
