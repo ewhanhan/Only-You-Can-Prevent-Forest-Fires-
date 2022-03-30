@@ -57,13 +57,19 @@ The game ends when the player fails to extinguish/ hush an event in the delegate
 
 **D** - Move right
 
-**Spacebar** - Pour water on a fire / hush camper(s)
+**Spacebar** - Fill bucket with water / Pour water on a fire / hush camper(s)
 
 **Escape** - Pause the game and bring up the pause menu while playing
 
 # Features
 
 ## Actions
+
+<p align="center">
+<img src="README/Assets/get-water.png" alt="get-water" width="200" />
+</p>
+
+**Get water from well** - Press spacebar when next to the water well to fill bucket with water. The bucket will only fill up to 10 pours at a time. After 10 pours you will need to refill your bucket.
 
 <p align="center">
 <img src="README/Assets/action_extinguishfire.png" alt="action_extinguishfire" width="200" />
@@ -98,6 +104,11 @@ Displays the total elapsed time since start.
 ### Time Bar
 
 Represents the remaining time to extinguish/ hush the object before you lose.
+
+### Stat Board
+
+Stat board displays the current issues(fire, loud campers) around the campsite you might resolve. It also indicates the number of pours remaining in your water bucket.
+
 
 ## Menus
 
