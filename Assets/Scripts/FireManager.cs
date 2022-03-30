@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class FireManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class FireManager : MonoBehaviour
     public float fireTime;
     private GameMenuController instanceOfGameMenuController;
     public Camera mainCamera;
+    public Text currentFiresText;
 
     public AudioSource fireSound;
 
@@ -56,6 +58,7 @@ public class FireManager : MonoBehaviour
             StartFire(fireSpots[randomSpot]);
             currentFires.Add(fireSpots[randomSpot]);
             fireSpots.RemoveAt(randomSpot);
+            currentFiresText.text = "Fires - " + currentFires.Count.ToString();
         }
     }
 
