@@ -111,20 +111,22 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 
 ## Music
 
-| Sound            | Source                                                                                            |
-| ---------------- | ------------------------------------------------------------------------------------------------- |
-| Water            | <https://opengameart.org/content/water-waves>                                                     |
-| Walking          | <https://opengameart.org/content/grass-foot-step-sounds-yo-frankie>                               |
-| Shh              | <https://www.zapsplat.com/music/female-adult-says-shh-as-if-asking-to-be-quiet-1/>                |
-| Start Menu       | <https://opengameart.org/content/forest>                                                          |
-| Background       | <https://opengameart.org/content/in-the-forest>                                                   |
-| Fire             | <https://opengameart.org/content/spell-4-fire>                                                    |
-| Game Over        | <https://www.zapsplat.com/music/8-bit-game-over-80s-arcade-simple-alert-notification-for-game-1/> |
-| Background Image | <https://wallpaper-mania.com/background/other-wallpapers/8-bit/>                                  |
-| Font             | <https://fonts.google.com/specimen/VT323/>                                                        |
+| Sound      | Source                                                                                            |
+| ---------- | ------------------------------------------------------------------------------------------------- |
+| Water      | <https://opengameart.org/content/water-waves>                                                     |
+| Walking    | <https://opengameart.org/content/grass-foot-step-sounds-yo-frankie>                               |
+| Shh        | <https://www.zapsplat.com/music/female-adult-says-shh-as-if-asking-to-be-quiet-1/>                |
+| Start Menu | <https://opengameart.org/content/forest>                                                          |
+| Background | <https://opengameart.org/content/in-the-forest>                                                   |
+| Fire       | <https://opengameart.org/content/spell-4-fire>                                                    |
+| Game Over  | <https://www.zapsplat.com/music/8-bit-game-over-80s-arcade-simple-alert-notification-for-game-1/> |
+
+| Image            | Source                                                           |
+| ---------------- | ---------------------------------------------------------------- |
+| Background Image | <https://wallpaper-mania.com/background/other-wallpapers/8-bit/> |
+
+| Font  | Source                                     |
+| ----- | ------------------------------------------ |
+| VT323 | <https://fonts.google.com/specimen/VT323/> |
 
 Sprites -
-
-Font -
-
-Images -
