@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         activeFires = 14;
+        playerActive = true;
     }
 
     void Start()
