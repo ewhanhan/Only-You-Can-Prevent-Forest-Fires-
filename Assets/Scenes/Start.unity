@@ -215,7 +215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &47330626
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1144,7 +1144,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "Objectives:\n- Stop the fires\n- Keep the campers under control\n- Make
+    sure the camp is safe as long as possible!\n\nControls:\nWASD (hold) - Movement
+    \nSpacebar - Stop fire / hush camper\nEscape - Pause game and bring up menu"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eb2b9a02069c14eb9bddd358fb43e3d9, type: 2}
   m_sharedMaterial: {fileID: 7446948541297388599, guid: eb2b9a02069c14eb9bddd358fb43e3d9, type: 2}
@@ -1171,14 +1173,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 59.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3254,7 +3256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1987144137
 RectTransform:
   m_ObjectHideFlags: 0
