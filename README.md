@@ -94,16 +94,19 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 ## Menus
 
 At the start of the game the player will be greeted by the Start Menu.
-### Start Menu options
-**Start** Will start the game.
-
-**Instructions** You can find instructions on how to play the game here.
-
-**Credits** View the developers of the game
-
-**Quit** Exit the game.
-
 Pressing the ESC button while playing will display the Pause Menu.
+
+
+### Start Menu options
+**Start** - Will start the game.
+
+**Instructions** - You can find instructions on how to play the game here.
+
+**Credits** - View the developers of the game
+
+**Quit** - Exit the game.
+
+
 ### Pause Menu Options
 **Resume** - Resume the game.
 
