@@ -71,7 +71,7 @@ The game ends when the player fails to extinguish/ hush an event in the delegate
 
 ## HUD Display
 
-### Map
+### Minimap
 
 <p align="center">
 <img src="README/Assets/minimap.png" alt="minimap" width="200" />
@@ -109,7 +109,21 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 
 # Imports / Credits
 
-Music -
+## Music
+
+
+
+| Sound  | Source |
+| ---------- | ---------- |
+| Water         | <https://opengameart.org/content/water-waves>                                             |
+| Walking | <https://opengameart.org/content/grass-foot-step-sounds-yo-frankie> |
+| Shh  |  <https://www.zapsplat.com/music/female-adult-says-shh-as-if-asking-to-be-quiet-1/> |
+| Start Menu | <https://opengameart.org/content/forest>  |
+| Background |  <https://opengameart.org/content/in-the-forest>  |
+| Fire |  <https://opengameart.org/content/spell-4-fire>  |
+| Game Over |  <https://www.zapsplat.com/music/8-bit-game-over-80s-arcade-simple-alert-notification-for-game-1/>  |
+  
+
 
 Sprites -
 
