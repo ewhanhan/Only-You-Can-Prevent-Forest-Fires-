@@ -107,7 +107,11 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 
 ### Stat Board
 
-Stat board displays the current issues(fire, loud campers) around the campsite you might resolve. It also indicates the number of pours remaining in your water bucket.
+<p align="center">
+<img src="README/Assets/stat-board.png" alt="stat-board" width="200" />
+</p>
+
+Stat board displays the current number of issues(fire, loud campers) around the campsite you want to resolve. It also indicates the number of pours remaining in your water bucket.
 
 
 ## Menus
