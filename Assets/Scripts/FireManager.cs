@@ -18,6 +18,8 @@ public class FireManager : MonoBehaviour
     public TileBase treeBaseTile;
     public float fireTime;
 
+    public AudioSource fireSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,7 @@ public class FireManager : MonoBehaviour
     }
 
     void StartFire(Vector3Int place)
-    {
+    {   fireSound.Play();
         fireTilemap.SetTile(place, fireTile);
     }
 }

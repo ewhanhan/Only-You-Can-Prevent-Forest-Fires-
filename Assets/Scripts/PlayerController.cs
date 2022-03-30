@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(CanMove(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f)))
                 {
+                    footStep.Play();
                     movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
                 }
             }
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(CanMove(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f)))
                 {
+                    footStep.Play();
                     movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
                 }
             }
