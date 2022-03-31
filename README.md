@@ -166,7 +166,8 @@ Pressing the ESC button while playing will display the Pause Menu.
 | Start Menu | <https://opengameart.org/content/forest>                                                          |
 | Background | <https://opengameart.org/content/in-the-forest>                                                   |
 | Fire       | <https://opengameart.org/content/spell-4-fire>                                                    |
-| Game Over  | <https://www.zapsplat.com/music/8-bit-game-over-80s-arcade-simple-alert-notification-for-game-1/> |
+| Game Over  | <https://www.zapsplat.com/music/digital-retro-game-sound-simple-negative-error-descending-fast-1/> |
+| Error  | <https://www.zapsplat.com/music/game-error-tone-2/> |
 
 | Image            | Source                                                           |
 | ---------------- | ---------------------------------------------------------------- |
