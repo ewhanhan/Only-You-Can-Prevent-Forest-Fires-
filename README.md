@@ -19,6 +19,10 @@ Winter Session 2021 Group:
 
 # How to Play
 
+## How to Install/Execute
+
+Please find the link at Unity Play
+
 ## How to Start the Game
 
 <p align="center">
@@ -39,7 +43,7 @@ When you start <em>Only You can Prevent Forest Fires!</em>, you can select the f
 
 ## End of Game Conditions
 
-The game ends when the player fails to extinguish/ hush an event in the delegated time. The time is indicated by a decreasing coloured bar underneath the tree/ camp.
+The game ends when the player fails to extinguish/ hush an event in the delegated time. The time is indicated by a decreasing coloured bar by the tree / camp.
 
 ## Objectives
 
@@ -103,6 +107,12 @@ Displays the total elapsed time since start.
 
 ### Time Bar
 
+<p align="center">
+<img src="README/Assets/healthslider_tree.png" alt="healthtree" width="200" />
+<img src="README/Assets/healthslider_campers.png" alt="healthtree" width="200" />
+
+</p>
+
 Represents the remaining time to extinguish/ hush the object before you lose.
 
 ### Stat Board
@@ -112,7 +122,6 @@ Represents the remaining time to extinguish/ hush the object before you lose.
 </p>
 
 Stat board displays the current number of issues(fire, loud campers) around the campsite you want to resolve. It also indicates the number of pours remaining in your water bucket.
-
 
 ## Menus
 
@@ -145,29 +154,22 @@ Pressing the ESC button while playing will display the Pause Menu.
 
 # System Requirements
 
-| Specifics  | Recommended                                            |
-| ---------- | ------------------------------------------------------ |
-| OS         | Windows 10                                             |
-| Processor} | Intel Pentium 4 processor or later that's SSE2 capable |
-| Memory     | 1 GB RAM                                               |
-| Graphics   | Nvidia GeForce GTX 460 or AMD Radeon HD 6870           |
-| Storage    | 250 MB available space                                 |
-| Additional | No internet connection, No in-game purchases           |
+<img src="README/Assets/systemrequirements_web.png" alt="webGLsysrequirements" width="900">
+
+For more information please review: https://docs.unity3d.com/Manual/webgl-browsercompatibility.html
 
 # Imports / Credits
 
-## Music
-
-| Sound      | Source                                                                                            |
-| ---------- | ------------------------------------------------------------------------------------------------- |
-| Water      | <https://opengameart.org/content/water-waves>                                                     |
-| Walking    | <https://opengameart.org/content/grass-foot-step-sounds-yo-frankie>                               |
-| Shh        | <https://www.zapsplat.com/music/female-adult-says-shh-as-if-asking-to-be-quiet-1/>                |
-| Start Menu | <https://opengameart.org/content/forest>                                                          |
-| Background | <https://opengameart.org/content/in-the-forest>                                                   |
-| Fire       | <https://opengameart.org/content/spell-4-fire>                                                    |
+| Sound      | Source                                                                                             |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| Water      | <https://opengameart.org/content/water-waves>                                                      |
+| Walking    | <https://opengameart.org/content/grass-foot-step-sounds-yo-frankie>                                |
+| Shh        | <https://www.zapsplat.com/music/female-adult-says-shh-as-if-asking-to-be-quiet-1/>                 |
+| Start Menu | <https://opengameart.org/content/forest>                                                           |
+| Background | <https://opengameart.org/content/in-the-forest>                                                    |
+| Fire       | <https://opengameart.org/content/spell-4-fire>                                                     |
 | Game Over  | <https://www.zapsplat.com/music/digital-retro-game-sound-simple-negative-error-descending-fast-1/> |
-| Error  | <https://www.zapsplat.com/music/game-error-tone-2/> |
+| Error      | <https://www.zapsplat.com/music/game-error-tone-2/>                                                |
 
 | Image            | Source                                                           |
 | ---------------- | ---------------------------------------------------------------- |
@@ -177,7 +179,7 @@ Pressing the ESC button while playing will display the Pause Menu.
 | ----- | ------------------------------------------ |
 | VT323 | <https://fonts.google.com/specimen/VT323/> |
 
-| Asset               | Source                                                |
-| ------------------- | ----------------------------------------------------- |
-| kenny_rpgurbanpack  | <https://kenney.nl/assets/rpg-urban-pack>             |
-| rouguelike-pack     | <https://kenney.nl/assets/roguelike-rpg-pack>         |
+| Asset              | Source                                        |
+| ------------------ | --------------------------------------------- |
+| kenny_rpgurbanpack | <https://kenney.nl/assets/rpg-urban-pack>     |
+| rouguelike-pack    | <https://kenney.nl/assets/roguelike-rpg-pack> |
