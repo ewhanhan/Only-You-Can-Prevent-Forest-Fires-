@@ -32,8 +32,10 @@ public class FireManager : MonoBehaviour
         int y_min = -9;
         int y_max = 8;
 
-        for(int x=x_min; x<=x_max; x++){
-            for(int y=y_min; y<=y_max; y++){
+        for (int x = x_min; x <= x_max; x++)
+        {
+            for (int y = y_min; y <= y_max; y++)
+            {
                 Vector3Int localPlace = new Vector3Int(x, y, 0);
                 if (objectTilemap.GetTile(localPlace) == treeBaseTile)
                 {
@@ -46,18 +48,20 @@ public class FireManager : MonoBehaviour
     void Update()
     {
         elapsedTime = Time.time - startTime;
-        if(elapsedTime > fireTime && fireSpots.Count > 0){
+        if (elapsedTime > fireTime && fireSpots.Count > 0)
+        {
             startTime = Time.time;
             int randomSpot = Random.Range(0, fireSpots.Count);
             StartFire(fireSpots[randomSpot]);
             currentFires.Add(fireSpots[randomSpot]);
             fireSpots.RemoveAt(randomSpot);
-            currentFiresText.text = "Fires - " + currentFires.Count.ToString();
+            currentFiresText.text = "FIRES - " + currentFires.Count.ToString();
         }
     }
 
     void StartFire(Vector3Int place)
-    {   fireSound.Play();
+    {
+        fireSound.Play();
         fireTilemap.SetTile(place, fireTile);
     }
 }
