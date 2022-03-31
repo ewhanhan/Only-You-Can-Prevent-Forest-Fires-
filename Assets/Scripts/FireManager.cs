@@ -13,6 +13,7 @@ public class FireManager : MonoBehaviour
     private float elapsedTime;
     private float startTime;
 
+    public List<Vector3Int> allAvailableFireSpots; 
     public List<Vector3Int> fireSpots;
     public List<Vector3Int> currentFires;
     public TileBase fireTile;
@@ -43,6 +44,7 @@ public class FireManager : MonoBehaviour
                 if (objectTilemap.GetTile(localPlace) == treeBaseTile)
                 {
                     fireSpots.Add(localPlace);
+                    allAvailableFireSpots.Add(localPlace);
                 }
             }
         }
@@ -67,9 +69,6 @@ public class FireManager : MonoBehaviour
         fireSound.Play();
         fireTilemap.SetTile(place, fireTile);
         // Fire Slider Creation
-        Grid grid = GameObject.Find("Grid").GetComponent<Grid>();
-        Vector3 worldPos = grid.GetCellCenterWorld(place);
-        Vector3 screenPos = mainCamera.WorldToScreenPoint(worldPos);
-        instanceOfGameMenuController.InstantiateFireHealth(screenPos);
+        instanceOfGameMenuController.InstantiateFireHealth(place);
     }
 }

@@ -14,13 +14,36 @@ public class GameMenuController : MonoBehaviour
   public GameObject HUD;
   public GameObject[] _UIArr;
   public Slider fireBaseSlider;
-  public List<Slider> fireBaseSlidersList;
+  public FireManager fireManager;
+  public List<Vector3Int> fireBaseSlidersLocations = new List<Vector3Int>();
+  public List<Slider> fireBaseSlidersList = new List<Slider>(14);
 
   public static bool IsEndGame = false;
   public static bool IsGamePaused = false;
 
   void Start()
   {
+    // Populate coordinates of sliders
+    fireBaseSlidersLocations.Add(new Vector3Int(-305, -230, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(-305, 50, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(-210, 330, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(-160, 190, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(-70, -140, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(-25, -280, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(-25, 0, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(25, 280, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(70, 470, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(165, -90, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(210, -230, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(210, 280, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(305, 50, 0));
+    fireBaseSlidersLocations.Add(new Vector3Int(350, -140, 0));
+
+    Debug.Log(fireBaseSlidersLocations.Count);
+    for(var i = 0; i < fireBaseSlidersLocations.Count; i++){
+      fireBaseSlidersList.Add(fireBaseSlider);
+    }
+
     IsEndGame = false;
     ResumeTime();
     ActivateOnlySpecificMenu(HUD);
@@ -35,22 +58,26 @@ public class GameMenuController : MonoBehaviour
     }
   }
 
-  public void InstantiateFireHealth(Vector3 localPlace){
-    Slider instantiatedSlider = Instantiate(fireBaseSlider, localPlace, Quaternion.identity);
-    instantiatedSlider.transform.SetParent(HUD.transform, false);
-    fireBaseSlidersList.Add(instantiatedSlider);
-    StartSingleFireTimer(instantiatedSlider);
+  public void InstantiateFireHealth(Vector3Int localPlace){
+    for(var i = 0; i < fireManager.allAvailableFireSpots.Count; i++){
+      if(fireManager.allAvailableFireSpots[i] == localPlace){
+        Slider instantiatedSlider = Instantiate(fireBaseSlider, fireBaseSlidersLocations[i], Quaternion.identity);
+        instantiatedSlider.transform.SetParent(HUD.transform, false);
+        fireBaseSlidersList.Insert(i, instantiatedSlider);
+        StartSingleFireTimer(instantiatedSlider);
+      }
+    }
   }
 
   public void DeleteFireSlider(Vector3Int localPlace){
-    foreach(Slider fireSlider in fireBaseSlidersList){
-      if(fireSlider.transform.position == localPlace){
+    for(var i = 0; i < fireManager.allAvailableFireSpots.Count; i++){
+      if(fireManager.allAvailableFireSpots[i] == localPlace){
         // Stop the Couroutine
         
         // Destroy object.
-        Destroy(fireSlider.gameObject);
+        Destroy(fireBaseSlidersList[i].gameObject);
         // Remove from list.
-        fireBaseSlidersList.Remove(fireSlider);
+        fireBaseSlidersList.RemoveAt(i);
       }
     }
   }
