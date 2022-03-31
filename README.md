@@ -174,6 +174,7 @@ For more information please review: https://docs.unity3d.com/Manual/webgl-browse
 | Fire       | <https://opengameart.org/content/spell-4-fire>                                                     |
 | Game Over  | <https://www.zapsplat.com/music/digital-retro-game-sound-simple-negative-error-descending-fast-1/> |
 | Error      | <https://www.zapsplat.com/music/game-error-tone-2/>                                                |
+| Camp Ruckus      | <https://opengameart.org/content/512-sound-effects-8-bit-style>                                          |
 
 | Image            | Source                                                           |
 | ---------------- | ---------------------------------------------------------------- |
