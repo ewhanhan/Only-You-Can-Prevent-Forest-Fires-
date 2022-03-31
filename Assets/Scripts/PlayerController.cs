@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource footStep;
     public AudioSource waterBucket;
+    public AudioSource emptyBucket;
+    public AudioSource hushCamper;
     public float moveSpeed = 5f;
     public Transform movePoint;
     public LayerMask stopMovement;
@@ -107,6 +109,7 @@ public class PlayerController : MonoBehaviour
         if (objectTilemap.GetTile(positionRight) == camperTile)
         {
             objectTilemap.SetTile(positionRight, null);
+            hushCamper.Play();
             camperManager.camperSpots.Add(positionRight);
             camperManager.currentCampers.Remove(positionRight);
             instanceOfGameMenuController.DeleteCamperSlider(positionRight);
@@ -115,6 +118,7 @@ public class PlayerController : MonoBehaviour
         if (objectTilemap.GetTile(positionLeft) == camperTile)
         {
             objectTilemap.SetTile(positionLeft, null);
+            hushCamper.Play();
             camperManager.camperSpots.Add(positionLeft);
             camperManager.currentCampers.Remove(positionLeft);
             instanceOfGameMenuController.DeleteCamperSlider(positionLeft);
@@ -123,6 +127,7 @@ public class PlayerController : MonoBehaviour
         if (objectTilemap.GetTile(positionDown) == camperTile)
         {
             objectTilemap.SetTile(positionDown, null);
+            hushCamper.Play();
             camperManager.camperSpots.Add(positionDown);
             camperManager.currentCampers.Remove(positionDown);
             instanceOfGameMenuController.DeleteCamperSlider(positionDown);
@@ -131,6 +136,7 @@ public class PlayerController : MonoBehaviour
         if (objectTilemap.GetTile(positionUp) == camperTile)
         {
             objectTilemap.SetTile(positionUp, null);
+            hushCamper.Play();
             camperManager.camperSpots.Add(positionUp);
             camperManager.currentCampers.Remove(positionUp);
             instanceOfGameMenuController.DeleteCamperSlider(positionUp);
@@ -140,16 +146,15 @@ public class PlayerController : MonoBehaviour
 
     private void DoPutOutFire()
     {
-        if (bucketWaterQuantity > 0)
-        {
-            Vector3Int gridPosition = fireTilemap.WorldToCell(movePoint.position);
-            Vector3Int positionRight = new Vector3Int(gridPosition[0] + 1, gridPosition[1], 0);
-            Vector3Int positionLeft = new Vector3Int(gridPosition[0] - 1, gridPosition[1], 0);
-            Vector3Int positionUp = new Vector3Int(gridPosition[0], gridPosition[1] + 1, 0);
-            Vector3Int positionDown = new Vector3Int(gridPosition[0], gridPosition[1] - 2, 0);
+        Vector3Int gridPosition = fireTilemap.WorldToCell(movePoint.position);
+        Vector3Int positionRight = new Vector3Int(gridPosition[0]+1, gridPosition[1], 0);
+        Vector3Int positionLeft = new Vector3Int(gridPosition[0]-1, gridPosition[1], 0);
+        Vector3Int positionUp = new Vector3Int(gridPosition[0], gridPosition[1]+1, 0);
+        Vector3Int positionDown = new Vector3Int(gridPosition[0], gridPosition[1]-2, 0);
 
-            if (fireTilemap.GetTile(positionRight))
-            {
+        if(bucketWaterQuantity > 0)
+        {
+            if(fireTilemap.GetTile(positionRight)){
                 fireTilemap.SetTile(positionRight, null);
                 waterBucket.Play();
                 bucketWaterQuantity -= 1;
@@ -192,6 +197,9 @@ public class PlayerController : MonoBehaviour
                 bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
                 currentFiresText.text = "Fires - " + fireManager.currentFires.Count.ToString();
             }
+        } else if (bucketWaterQuantity <= 0 && (fireTilemap.GetTile(positionUp) || fireTilemap.GetTile(positionDown) || fireTilemap.GetTile(positionRight) || fireTilemap.GetTile(positionLeft))){
+            
+            emptyBucket.Play();
         }
     }
 
