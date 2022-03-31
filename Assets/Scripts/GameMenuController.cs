@@ -28,6 +28,9 @@ public class GameMenuController : MonoBehaviour
   public static bool IsGamePaused = false;
   public int healthDecreaseTime = 30; // seconds it takes for health bars to reach 0
 
+  public AudioSource gameOver;
+  public AudioSource gameBGM;
+
   void Start()
   {
     // Populate coordinates of sliders
@@ -168,6 +171,8 @@ public class GameMenuController : MonoBehaviour
   public void EndGame()
   {
     StopTime();
+    gameBGM.Stop();
+    gameOver.Play();
     for(var i = 0; i < fireBaseSlidersList.Count; i++){
       fireBaseSlidersList[i].gameObject.SetActive(false);
       fireBaseSlidersList[i].value = 1;
