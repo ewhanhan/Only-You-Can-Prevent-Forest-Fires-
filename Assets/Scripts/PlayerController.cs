@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     public TileBase fireTile;
     [HideInInspector]
     public bool playerActive;
-    [HideInInspector]
     public int bucketWaterQuantity;
     public TileBase camperTile;
     public TileBase wellTile;

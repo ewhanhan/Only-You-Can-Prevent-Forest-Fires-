@@ -29949,7 +29949,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BUCKET - 0
+  m_Text: BUCKET - 1
 --- !u!222 &815135582
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31307,7 +31307,7 @@ MonoBehaviour:
   fireTilemap: {fileID: 2138290894}
   fireTile: {fileID: 11400000, guid: bf1897c3f827f4b19815ec277ce17516, type: 2}
   playerActive: 0
-  bucketWaterQuantity: 0
+  bucketWaterQuantity: 1
   camperTile: {fileID: 11400000, guid: ae647c7bddcec4e26bee6e07b71a5f34, type: 2}
   wellTile: {fileID: 11400000, guid: fcf837b4acfef451082f0ed9cd2dce1e, type: 2}
   footStep: {fileID: 628535062}
