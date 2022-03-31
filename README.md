@@ -21,7 +21,11 @@ Winter Session 2021 Group:
 
 ## How to Install/Execute
 
-Please find the link at Unity Play
+### Option 1 (Recommended): Unity Play
+Please find the link at Unity Play: https://play.unity.com/mg/other/only-you-can-prevent-forest-fires
+
+### Option 2: Load Windows 10 Executable
+Double click on the executable uploaded to OWL with the source code to execute the game. Please note this executable is built for Windows 10.
 
 ## How to Start the Game
 
