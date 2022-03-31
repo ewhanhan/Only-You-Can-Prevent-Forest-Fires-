@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -755.45306, y: -452.95068}
+  m_AnchoredPosition: {x: -755.4531, y: -452.95068}
   m_SizeDelta: {x: -1546.976, y: -925.139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &49938708
@@ -30346,15 +30346,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireManager: {fileID: 2138290889}
-  camperManager: {fileID: 0}
+  camperManager: {fileID: 378566868}
   groundTilemap: {fileID: 240823390}
   objectTilemap: {fileID: 378566867}
   fireTilemap: {fileID: 2138290894}
   fireTile: {fileID: 11400000, guid: bf1897c3f827f4b19815ec277ce17516, type: 2}
   playerActive: 0
   bucketWaterQuantity: 0
-  camperTile: {fileID: 0}
-  wellTile: {fileID: 0}
+  camperTile: {fileID: 11400000, guid: ae647c7bddcec4e26bee6e07b71a5f34, type: 2}
+  wellTile: {fileID: 11400000, guid: fcf837b4acfef451082f0ed9cd2dce1e, type: 2}
   footStep: {fileID: 628535062}
   waterBucket: {fileID: 864563606}
   moveSpeed: 5
@@ -30362,9 +30362,9 @@ MonoBehaviour:
   stopMovement:
     serializedVersion: 2
     m_Bits: 64
-  bucketText: {fileID: 0}
-  currentFiresText: {fileID: 0}
-  loudCampers: {fileID: 0}
+  bucketText: {fileID: 815135581}
+  currentFiresText: {fileID: 1721986573}
+  loudCampers: {fileID: 708522321}
 --- !u!212 &1119274023
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32407,24 +32407,10 @@ MonoBehaviour:
   - {fileID: 927404100}
   - {fileID: 91904065}
   - {fileID: 1375458174}
-  fireBaseSlider: {fileID: 6191900942059126634, guid: 9e8f77fb03aa2564882d3bf761953a94, type: 3}
+  fireBaseSlider: {fileID: 6730155186130821772, guid: 9e8f77fb03aa2564882d3bf761953a94, type: 3}
   fireManager: {fileID: 2138290889}
+  fireBaseSlidersLocations: []
   fireBaseSlidersList: []
-  allFireGridLocations:
-  - {x: -7, y: -7, z: 0}
-  - {x: -7, y: 1, z: 0}
-  - {x: -5, y: 5, z: 0}
-  - {x: -4, y: 2, z: 0}
-  - {x: -2, y: -5, z: 0}
-  - {x: -1, y: -8, z: 0}
-  - {x: -1, y: -2, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 1, y: 8, z: 0}
-  - {x: 3, y: -4, z: 0}
-  - {x: 4, y: -7, z: 0}
-  - {x: 4, y: 4, z: 0}
-  - {x: 6, y: -1, z: 0}
-  - {x: 7, y: -5, z: 0}
 --- !u!1 &1721986570
 GameObject:
   m_ObjectHideFlags: 0

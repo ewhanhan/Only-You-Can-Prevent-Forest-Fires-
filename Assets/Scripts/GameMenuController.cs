@@ -39,7 +39,6 @@ public class GameMenuController : MonoBehaviour
     fireBaseSlidersLocations.Add(new Vector3Int(305, 50, 0));
     fireBaseSlidersLocations.Add(new Vector3Int(350, -140, 0));
 
-    Debug.Log(fireBaseSlidersLocations.Count);
     for(var i = 0; i < fireBaseSlidersLocations.Count; i++){
       fireBaseSlidersList.Add(fireBaseSlider);
     }
@@ -75,7 +74,7 @@ public class GameMenuController : MonoBehaviour
         // Stop the Couroutine
         
         // Destroy object.
-        Destroy(fireBaseSlidersList[i].gameObject);
+        // Destroy(fireBaseSlidersList[i], true);
         // Remove from list.
         fireBaseSlidersList.RemoveAt(i);
       }
