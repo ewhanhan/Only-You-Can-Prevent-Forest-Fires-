@@ -60,12 +60,12 @@ public class FireManager : MonoBehaviour
             StartFire(fireSpots[randomSpot]);
             currentFires.Add(fireSpots[randomSpot]);
             fireSpots.RemoveAt(randomSpot);
-            currentFiresText.text = "Fires - " + currentFires.Count.ToString();
+            currentFiresText.text = "FIRES - " + currentFires.Count.ToString();
         }
     }
 
     void StartFire(Vector3Int place)
-    {   
+    {
         fireSound.Play();
         fireTilemap.SetTile(place, fireTile);
         // Fire Slider Creation

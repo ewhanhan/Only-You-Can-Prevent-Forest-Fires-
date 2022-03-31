@@ -25,20 +25,21 @@ public class CamperManager : MonoBehaviour
         camperSpots.Add(new Vector3Int(-7, 6, 0));
         camperSpots.Add(new Vector3Int(-11, 6, 0));
         camperSpots.Add(new Vector3Int(9, 6, 0));
-    
+
     }
 
     // Update is called once per frame
     void Update()
     {
         elapsedTime = Time.time - startTime;
-        if(elapsedTime > camperTime && camperSpots.Count > 0){
+        if (elapsedTime > camperTime && camperSpots.Count > 0)
+        {
             startTime = Time.time;
             int randomSpot = Random.Range(0, camperSpots.Count);
             AddCamper(camperSpots[randomSpot]);
             currentCampers.Add(camperSpots[randomSpot]);
             camperSpots.RemoveAt(randomSpot);
-            loudCampers.text = "Loud Campers - " + currentCampers.Count.ToString();
+            loudCampers.text = "LOUD CAMPERS - " + currentCampers.Count.ToString();
         }
     }
 
