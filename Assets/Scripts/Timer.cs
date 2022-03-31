@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
     if (playerController.playerActive)
     {
       currentTime += Time.deltaTime;
-      currentTimeText.text = currentTime.ToString().Substring(0,4);
+      currentTimeText.text = currentTime.ToString("F2");
     }
   }
 }

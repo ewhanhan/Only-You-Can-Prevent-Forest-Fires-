@@ -13,11 +13,14 @@ public class FireManager : MonoBehaviour
     private float elapsedTime;
     private float startTime;
 
+    public List<Vector3Int> allAvailableFireSpots; 
     public List<Vector3Int> fireSpots;
     public List<Vector3Int> currentFires;
     public TileBase fireTile;
     public TileBase treeBaseTile;
     public float fireTime;
+    private GameMenuController instanceOfGameMenuController;
+    public Camera mainCamera;
     public Text currentFiresText;
 
     public AudioSource fireSound;
@@ -25,6 +28,7 @@ public class FireManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instanceOfGameMenuController = GameObject.Find("Canvas_UI").GetComponent<GameMenuController>();
         startTime = Time.time;
 
         int x_min = -8;
@@ -32,12 +36,15 @@ public class FireManager : MonoBehaviour
         int y_min = -9;
         int y_max = 8;
 
-        for(int x=x_min; x<=x_max; x++){
-            for(int y=y_min; y<=y_max; y++){
+        for (int x = x_min; x <= x_max; x++)
+        {
+            for (int y = y_min; y <= y_max; y++)
+            {
                 Vector3Int localPlace = new Vector3Int(x, y, 0);
                 if (objectTilemap.GetTile(localPlace) == treeBaseTile)
                 {
                     fireSpots.Add(localPlace);
+                    allAvailableFireSpots.Add(localPlace);
                 }
             }
         }
@@ -46,18 +53,22 @@ public class FireManager : MonoBehaviour
     void Update()
     {
         elapsedTime = Time.time - startTime;
-        if(elapsedTime > fireTime && fireSpots.Count > 0){
+        if (elapsedTime > fireTime && fireSpots.Count > 0)
+        {
             startTime = Time.time;
             int randomSpot = Random.Range(0, fireSpots.Count);
             StartFire(fireSpots[randomSpot]);
             currentFires.Add(fireSpots[randomSpot]);
             fireSpots.RemoveAt(randomSpot);
-            currentFiresText.text = "Fires - " + currentFires.Count.ToString();
+            currentFiresText.text = "FIRES - " + currentFires.Count.ToString();
         }
     }
 
     void StartFire(Vector3Int place)
-    {   fireSound.Play();
+    {
+        fireSound.Play();
         fireTilemap.SetTile(place, fireTile);
+        // Fire Slider Creation
+        instanceOfGameMenuController.InstantiateFireHealth(place);
     }
 }
