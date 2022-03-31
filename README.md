@@ -91,7 +91,7 @@ The game ends when the player fails to extinguish/ hush an event in the delegate
 <img src="README/Assets/minimap.png" alt="minimap" width="200" />
 </p>
 
-Displays a broader view of the game and helps gather information of other sections of the campsite.
+Displays an alternate view of the game and helps gather information of other sections of the campsite.
 
 ### Timer
 
