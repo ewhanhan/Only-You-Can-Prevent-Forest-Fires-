@@ -106,10 +106,6 @@ public class GameMenuController : MonoBehaviour
   public void QuitGame()
   {
     Application.Quit();
-    if (EditorApplication.isPlaying)
-    {
-      EditorApplication.ExitPlaymode();
-    }
   }
 
   public void Restart()
