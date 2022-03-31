@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Text bucketText;
     public Text currentFiresText;
     public Text loudCampers;
+    private GameMenuController instanceOfGameMenuController;
 
 
     private void Awake()
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         movePoint.parent = null;
+        instanceOfGameMenuController = GameObject.Find("Canvas_UI").GetComponent<GameMenuController>();
     }
 
     void Update()
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour
         Vector3Int positionLeft = new Vector3Int(gridPosition[0] - 1, gridPosition[1], 0);
         Vector3Int positionUp = new Vector3Int(gridPosition[0], gridPosition[1] + 1, 0);
         Vector3Int positionDown = new Vector3Int(gridPosition[0], gridPosition[1] - 1, 0);
+        GameMenuController instanceOfGameMenuController = GameObject.Find("Canvas_UI").GetComponent<GameMenuController>();
 
         if (objectTilemap.GetTile(positionRight) == wellTile || objectTilemap.GetTile(positionLeft) == wellTile ||
             objectTilemap.GetTile(positionUp) == wellTile || objectTilemap.GetTile(positionDown) == wellTile)
@@ -109,6 +112,7 @@ public class PlayerController : MonoBehaviour
             hushCamper.Play();
             camperManager.camperSpots.Add(positionRight);
             camperManager.currentCampers.Remove(positionRight);
+            instanceOfGameMenuController.DeleteCamperSlider(positionRight);
             loudCampers.text = "LOUD CAMPERS - " + camperManager.currentCampers.Count.ToString();
         }
         if (objectTilemap.GetTile(positionLeft) == camperTile)
@@ -117,6 +121,7 @@ public class PlayerController : MonoBehaviour
             hushCamper.Play();
             camperManager.camperSpots.Add(positionLeft);
             camperManager.currentCampers.Remove(positionLeft);
+            instanceOfGameMenuController.DeleteCamperSlider(positionLeft);
             loudCampers.text = "LOUD CAMPERS - " + camperManager.currentCampers.Count.ToString();
         }
         if (objectTilemap.GetTile(positionDown) == camperTile)
@@ -125,6 +130,7 @@ public class PlayerController : MonoBehaviour
             hushCamper.Play();
             camperManager.camperSpots.Add(positionDown);
             camperManager.currentCampers.Remove(positionDown);
+            instanceOfGameMenuController.DeleteCamperSlider(positionDown);
             loudCampers.text = "LOUD CAMPERS - " + camperManager.currentCampers.Count.ToString();
         }
         if (objectTilemap.GetTile(positionUp) == camperTile)
@@ -133,6 +139,7 @@ public class PlayerController : MonoBehaviour
             hushCamper.Play();
             camperManager.camperSpots.Add(positionUp);
             camperManager.currentCampers.Remove(positionUp);
+            instanceOfGameMenuController.DeleteCamperSlider(positionUp);
             loudCampers.text = "LOUD CAMPERS - " + camperManager.currentCampers.Count.ToString();
         }
     }
@@ -153,8 +160,9 @@ public class PlayerController : MonoBehaviour
                 bucketWaterQuantity -= 1;
                 fireManager.fireSpots.Add(positionRight);
                 fireManager.currentFires.Remove(positionRight);
-                bucketText.text = "BUCKET - " + bucketWaterQuantity.ToString();
-                currentFiresText.text = "FIRES - " + fireManager.currentFires.Count.ToString();
+                instanceOfGameMenuController.DeleteFireSlider(positionRight);
+                bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
+                currentFiresText.text = "Fires - " + fireManager.currentFires.Count.ToString();
             }
             if (fireTilemap.GetTile(positionLeft))
             {
@@ -163,8 +171,9 @@ public class PlayerController : MonoBehaviour
                 bucketWaterQuantity -= 1;
                 fireManager.fireSpots.Add(positionLeft);
                 fireManager.currentFires.Remove(positionLeft);
-                bucketText.text = "BUCKET - " + bucketWaterQuantity.ToString();
-                currentFiresText.text = "FIRES - " + fireManager.currentFires.Count.ToString();
+                instanceOfGameMenuController.DeleteFireSlider(positionLeft);
+                bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
+                currentFiresText.text = "Fires - " + fireManager.currentFires.Count.ToString();
             }
             if (fireTilemap.GetTile(positionDown))
             {
@@ -173,8 +182,9 @@ public class PlayerController : MonoBehaviour
                 bucketWaterQuantity -= 1;
                 fireManager.fireSpots.Add(positionDown);
                 fireManager.currentFires.Remove(positionDown);
-                bucketText.text = "BUCKET - " + bucketWaterQuantity.ToString();
-                currentFiresText.text = "FIRES - " + fireManager.currentFires.Count.ToString();
+                instanceOfGameMenuController.DeleteFireSlider(positionDown);
+                bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
+                currentFiresText.text = "Fires - " + fireManager.currentFires.Count.ToString();
             }
             if (fireTilemap.GetTile(positionUp))
             {
@@ -183,8 +193,9 @@ public class PlayerController : MonoBehaviour
                 bucketWaterQuantity -= 1;
                 fireManager.fireSpots.Add(positionUp);
                 fireManager.currentFires.Remove(positionUp);
-                bucketText.text = "BUCKET - " + bucketWaterQuantity.ToString();
-                currentFiresText.text = "FIRES - " + fireManager.currentFires.Count.ToString();
+                instanceOfGameMenuController.DeleteFireSlider(positionUp);
+                bucketText.text = "Bucket - " + bucketWaterQuantity.ToString();
+                currentFiresText.text = "Fires - " + fireManager.currentFires.Count.ToString();
             }
         } else if (bucketWaterQuantity <= 0 && (fireTilemap.GetTile(positionUp) || fireTilemap.GetTile(positionDown) || fireTilemap.GetTile(positionRight) || fireTilemap.GetTile(positionLeft))){
             

@@ -13,11 +13,14 @@ public class FireManager : MonoBehaviour
     private float elapsedTime;
     private float startTime;
 
+    public List<Vector3Int> allAvailableFireSpots; 
     public List<Vector3Int> fireSpots;
     public List<Vector3Int> currentFires;
     public TileBase fireTile;
     public TileBase treeBaseTile;
     public float fireTime;
+    private GameMenuController instanceOfGameMenuController;
+    public Camera mainCamera;
     public Text currentFiresText;
 
     public AudioSource fireSound;
@@ -25,6 +28,7 @@ public class FireManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instanceOfGameMenuController = GameObject.Find("Canvas_UI").GetComponent<GameMenuController>();
         startTime = Time.time;
 
         int x_min = -8;
@@ -40,6 +44,7 @@ public class FireManager : MonoBehaviour
                 if (objectTilemap.GetTile(localPlace) == treeBaseTile)
                 {
                     fireSpots.Add(localPlace);
+                    allAvailableFireSpots.Add(localPlace);
                 }
             }
         }
@@ -63,5 +68,7 @@ public class FireManager : MonoBehaviour
     {
         fireSound.Play();
         fireTilemap.SetTile(place, fireTile);
+        // Fire Slider Creation
+        instanceOfGameMenuController.InstantiateFireHealth(place);
     }
 }
