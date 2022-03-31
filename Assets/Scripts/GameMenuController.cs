@@ -15,11 +15,18 @@ public class GameMenuController : MonoBehaviour
   public GameObject[] _UIArr;
   public Slider fireBaseSlider;
   public FireManager fireManager;
+  public CamperManager camperManager;
   public List<Vector3Int> fireBaseSlidersLocations = new List<Vector3Int>();
-  public List<Slider> fireBaseSlidersList = new List<Slider>(14);
+  public List<Slider> fireBaseSlidersList = new List<Slider>();
+  public List<Slider> camperBaseSlidersList = new List<Slider>();
+  Coroutine[] MyFireCoroutines = new Coroutine[14];
+  Coroutine[] MyCamperCoroutines = new Coroutine[14];
+  private List<int> activeFireSliders = new List<int>();
+  private List<int> activeCamperSliders = new List<int>();
 
   public static bool IsEndGame = false;
   public static bool IsGamePaused = false;
+  public int healthDecreaseTime = 30; // seconds it takes for health bars to reach 0
 
   void Start()
   {
@@ -39,13 +46,10 @@ public class GameMenuController : MonoBehaviour
     fireBaseSlidersLocations.Add(new Vector3Int(305, 50, 0));
     fireBaseSlidersLocations.Add(new Vector3Int(350, -140, 0));
 
-    for(var i = 0; i < fireBaseSlidersLocations.Count; i++){
-      fireBaseSlidersList.Add(fireBaseSlider);
-    }
-
     IsEndGame = false;
     ResumeTime();
     ActivateOnlySpecificMenu(HUD);
+    Coroutine healthTimerDecrease = StartCoroutine(DecreseHealthTimer());
   }
 
   void Update()
@@ -60,10 +64,19 @@ public class GameMenuController : MonoBehaviour
   public void InstantiateFireHealth(Vector3Int localPlace){
     for(var i = 0; i < fireManager.allAvailableFireSpots.Count; i++){
       if(fireManager.allAvailableFireSpots[i] == localPlace){
-        Slider instantiatedSlider = Instantiate(fireBaseSlider, fireBaseSlidersLocations[i], Quaternion.identity);
-        instantiatedSlider.transform.SetParent(HUD.transform, false);
-        fireBaseSlidersList.Insert(i, instantiatedSlider);
-        StartSingleFireTimer(instantiatedSlider);
+        fireBaseSlidersList[i].gameObject.SetActive(true);
+        activeFireSliders.Add(i);
+        StartSingleFireTimer(fireBaseSlidersList[i], i);
+      }
+    }
+  }
+
+  public void InstantiateCamperHealth(Vector3Int localPlace){
+    for(var i = 0; i < camperManager.allAvailableCamperSpots.Count; i++){
+      if(camperManager.allAvailableCamperSpots[i] == localPlace){
+        camperBaseSlidersList[i].gameObject.SetActive(true);
+        activeCamperSliders.Add(i);
+        StartSingleCamperTimer(camperBaseSlidersList[i], i);
       }
     }
   }
@@ -72,22 +85,58 @@ public class GameMenuController : MonoBehaviour
     for(var i = 0; i < fireManager.allAvailableFireSpots.Count; i++){
       if(fireManager.allAvailableFireSpots[i] == localPlace){
         // Stop the Couroutine
-        
-        // Destroy object.
-        // Destroy(fireBaseSlidersList[i], true);
-        // Remove from list.
-        fireBaseSlidersList.RemoveAt(i);
+        StopCoroutine(MyFireCoroutines[i]);
+        fireBaseSlidersList[i].gameObject.SetActive(false);
+        fireBaseSlidersList[i].value = 1;
+        activeFireSliders.Remove(i);      
       }
     }
   }
 
-  void StartSingleFireTimer(Slider fireSlider){
-    StartCoroutine(DecreseFireBaseSlider(fireSlider));
+   public void DeleteCamperSlider(Vector3Int localPlace){
+    for(var i = 0; i < camperManager.allAvailableCamperSpots.Count; i++){
+      if(camperManager.allAvailableCamperSpots[i] == localPlace){
+        // Stop the Couroutine
+        StopCoroutine(MyCamperCoroutines[i]);
+        camperBaseSlidersList[i].gameObject.SetActive(false);
+        camperBaseSlidersList[i].value = 1;  
+        activeCamperSliders.Remove(i);      
+      }
+    }
+  }
+
+  void StartSingleFireTimer(Slider fireSlider, int i){
+     MyFireCoroutines[i] = StartCoroutine(DecreseHealthSliders(fireSlider));
   }
 
   void StartAllFireTimers(){
-    foreach(Slider fireSlider in fireBaseSlidersList){
-      StartCoroutine(DecreseFireBaseSlider(fireSlider));
+    Debug.Log(activeFireSliders.Count);
+    for(var i = 0; i < activeFireSliders.Count; i++){
+      fireBaseSlidersList[activeFireSliders[i]].gameObject.SetActive(true);
+      MyFireCoroutines[activeFireSliders[i]] = StartCoroutine(DecreseHealthSliders(fireBaseSlidersList[activeFireSliders[i]]));
+    }
+  }
+
+  void PauseAllFireTimers(){
+    for(var i = 0; i < fireBaseSlidersList.Count; i++){
+      fireBaseSlidersList[i].gameObject.SetActive(false);
+    }
+  }
+
+  void StartSingleCamperTimer(Slider camperSlider, int i){
+    MyCamperCoroutines[i] = StartCoroutine(DecreseHealthSliders(camperSlider));
+  }
+
+  void StartAllCamperTimers(){
+    for(var i = 0; i < activeCamperSliders.Count; i++){
+      camperBaseSlidersList[activeCamperSliders[i]].gameObject.SetActive(true);
+      MyCamperCoroutines[activeCamperSliders[i]] = StartCoroutine(DecreseHealthSliders(camperBaseSlidersList[i]));
+    }
+  }
+
+  void PauseAllCamperTimers(){
+    for(var i = 0; i < camperBaseSlidersList.Count; i++){
+      camperBaseSlidersList[i].gameObject.SetActive(false);
     }
   }
 
@@ -97,6 +146,7 @@ public class GameMenuController : MonoBehaviour
     IsGamePaused = false;
     ActivateOnlySpecificMenu(HUD);
     StartAllFireTimers();
+    StartAllCamperTimers();
   }
 
   void PauseGame()
@@ -106,6 +156,8 @@ public class GameMenuController : MonoBehaviour
       StopTime();
       StopAllCoroutines();
       ActivateOnlySpecificMenu(pauseDisplay);
+      PauseAllFireTimers();
+      PauseAllCamperTimers();
     }
     else
     {
@@ -116,6 +168,14 @@ public class GameMenuController : MonoBehaviour
   public void EndGame()
   {
     StopTime();
+    for(var i = 0; i < fireBaseSlidersList.Count; i++){
+      fireBaseSlidersList[i].gameObject.SetActive(false);
+      fireBaseSlidersList[i].value = 1;
+    }
+    for(var i = 0; i < camperBaseSlidersList.Count; i++){
+      camperBaseSlidersList[i].gameObject.SetActive(false);
+      camperBaseSlidersList[i].value = 1;
+    }
     ActivateOnlySpecificMenu(endGameDisplay);
   }
 
@@ -178,15 +238,25 @@ public class GameMenuController : MonoBehaviour
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
   }
 
-  public IEnumerator DecreseFireBaseSlider(Slider slider){
-    float timeSlice = (slider.value / 30);
+  public IEnumerator DecreseHealthSliders(Slider slider){
+    float timeSlice = (slider.value / healthDecreaseTime);
     while (slider.value >= 0){
-        slider.value -= timeSlice;
-        yield return new WaitForSeconds(1);
-        if (slider.value <= 0){
-            EndGame();
-            break;
-        }
+      slider.value -= timeSlice;
+      yield return new WaitForSeconds(1);
+      if (slider.value <= 0){
+          EndGame();
+          break;
+      }
+    }
+  }
+
+  public IEnumerator DecreseHealthTimer(){
+    while (true){
+      yield return new WaitForSeconds(20);
+      healthDecreaseTime -= 1;
+      if(healthDecreaseTime == 10){
+        break;
+      }
     }
   }
 }

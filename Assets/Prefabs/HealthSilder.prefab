@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 5040953363061511251}
   - component: {fileID: 6730155186130821772}
   m_Layer: 5
-  m_Name: FireBaseSilder
+  m_Name: HealthSilder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

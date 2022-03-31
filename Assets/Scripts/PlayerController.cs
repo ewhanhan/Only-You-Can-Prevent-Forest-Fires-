@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
             objectTilemap.SetTile(positionRight, null);
             camperManager.camperSpots.Add(positionRight);
             camperManager.currentCampers.Remove(positionRight);
+            instanceOfGameMenuController.DeleteCamperSlider(positionRight);
             loudCampers.text = "LOUD CAMPERS - " + camperManager.currentCampers.Count.ToString();
         }
         if (objectTilemap.GetTile(positionLeft) == camperTile)
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour
             objectTilemap.SetTile(positionLeft, null);
             camperManager.camperSpots.Add(positionLeft);
             camperManager.currentCampers.Remove(positionLeft);
+            instanceOfGameMenuController.DeleteCamperSlider(positionLeft);
             loudCampers.text = "LOUD CAMPERS - " + camperManager.currentCampers.Count.ToString();
         }
         if (objectTilemap.GetTile(positionDown) == camperTile)
@@ -123,6 +125,7 @@ public class PlayerController : MonoBehaviour
             objectTilemap.SetTile(positionDown, null);
             camperManager.camperSpots.Add(positionDown);
             camperManager.currentCampers.Remove(positionDown);
+            instanceOfGameMenuController.DeleteCamperSlider(positionDown);
             loudCampers.text = "LOUD CAMPERS - " + camperManager.currentCampers.Count.ToString();
         }
         if (objectTilemap.GetTile(positionUp) == camperTile)
@@ -130,6 +133,7 @@ public class PlayerController : MonoBehaviour
             objectTilemap.SetTile(positionUp, null);
             camperManager.camperSpots.Add(positionUp);
             camperManager.currentCampers.Remove(positionUp);
+            instanceOfGameMenuController.DeleteCamperSlider(positionUp);
             loudCampers.text = "LOUD CAMPERS - " + camperManager.currentCampers.Count.ToString();
         }
     }
