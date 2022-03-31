@@ -17,6 +17,9 @@ public class CamperManager : MonoBehaviour
     public Text loudCampers;
     public List<Vector3Int> allAvailableCamperSpots;
     private GameMenuController instanceOfGameMenuController;
+    public AudioSource campSound;
+    public AudioSource humanSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,8 @@ public class CamperManager : MonoBehaviour
             startTime = Time.time;
             int randomSpot = Random.Range(0, camperSpots.Count);
             AddCamper(camperSpots[randomSpot]);
+            campSound.Play();
+            humanSound.Play();
             currentCampers.Add(camperSpots[randomSpot]);
             camperSpots.RemoveAt(randomSpot);
             loudCampers.text = "LOUD CAMPERS - " + currentCampers.Count.ToString();
